@@ -1,0 +1,14 @@
+version: "3.5"
+
+services:
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - "9000:80"
+    links:
+      - wordpress-db
+
+  wordpress-db:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
