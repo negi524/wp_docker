@@ -57,3 +57,7 @@ $ docker container exec -it wordpress_docker /bin/bash
 
 Ctr + p
 Ctr + q
+
+## ブラウザで確認する
+
+`localhost:9000`にアクセスすると、WordPress の画面が表示される
