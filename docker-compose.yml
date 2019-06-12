@@ -3,6 +3,7 @@ version: "3.5"
 services:
   # wordpressの設定
   wordpress:
+    container_name: wp_docker
     # wordpressのイメージを指定(常に最新にする)
     image: wordpress:latest
     # ホストマシンのポート番号:コンテナのポート番号
@@ -14,6 +15,7 @@ services:
 
   # wordpressで利用するDBの設定
   wordpress-db:
+    container_name: db_docker
     # mysqlのイメージを指定(さくらのレンタルサーバと同じバージョン)
     image: mysql:5.7
     ports:
