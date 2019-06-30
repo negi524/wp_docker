@@ -10,6 +10,11 @@
 - コンテナ名:db_docker
 - version:5.7
 
+## ignore
+
+- .env：環境設定ファイル
+- ./db-data/mysql.dump.sql：mysql のデータ永続化のための dump ファイル
+
 ## コンテナの操作
 
 ### コンテナの起動
@@ -62,6 +67,16 @@ Ctr + q
 
 `localhost:9000`にアクセスすると、WordPress の画面が表示される
 
-## 環境設定ファイル
+## データの永続化について
 
-.env
+データ永続化のため、mysql のデータをローカル環境に dump する
+
+```
+$ docker exec -it dbコンテナ名 sh -c 'mysqldump データベース名 -u データベースユーザ名 -pデータベースパスワード 2> /dev/null' > db-data/mysql.dump.sql
+```
+
+|      コマンドの値      | .env ファイルの値 |
+| :--------------------: | :---------------: |
+|     データベース名     |  MYSQL_DATABASE   |
+|  データベースユーザ名  |    MYSQL_USER     |
+| データベースパスワード |  MYSQL_PASSWORD   |
