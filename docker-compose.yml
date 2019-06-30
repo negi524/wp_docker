@@ -11,11 +11,11 @@ services:
     # ホストマシンのポート番号:コンテナのポート番号
     ports:
       - "9000:80"
-    # ホスト側のテーマ開発ディレクトリをマウントする
+    # ホスト側のデータをマウントする(ホスト側のパス:コンテナ側のパス)
     volumes:
-      # wp-config.phpなどの永続化のため、本体もマウントする
+      # wp-config.phpなどの永続化のため、WordPress本体をマウントする
       - ./wordpress:/var/www/html
-      # ホスト側のパス:コンテナ側のパス
+      # テーマ開発ディレクトリ
       - ~/Documents/workspace/blogtheme:/var/www/html/wp-content/themes/blogtheme
     # DBと連携する
     links:
