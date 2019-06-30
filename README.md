@@ -70,6 +70,7 @@ Ctr + q
 ## データの永続化について
 
 データ永続化のため、mysql のデータをローカル環境に dump する
+コンテナ起動後、以下のコマンドを実行すれば`docker-compose down`コマンドでリソースを削除してもデータが消えず、初期設定の手間が省ける
 
 ```
 $ docker exec -it dbコンテナ名 sh -c 'mysqldump データベース名 -u データベースユーザ名 -pデータベースパスワード 2> /dev/null' > db-data/mysql.dump.sql
