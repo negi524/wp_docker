@@ -10,9 +10,17 @@ services:
     # ホストマシンのポート番号:コンテナのポート番号
     ports:
       - "9000:80"
+    # ホスト側のテーマ開発ディレクトリをマウントする
+    volumes:
+      # ホスト側のパス:コンテナ側のパス
+      - ~/Documents/workspace/blogtheme:/var/www/html/wp-content/themes/blogtheme
     # DBと連携する
     links:
       - wordpress-db
+    environment:
+      WORDPRESS_DB_HOST: "wordpress-db:3306"
+    # git管理下に含めない環境設定ファイルを参照
+    env_file: .env
 
   # wordpressで利用するDBの設定
   wordpress-db:
@@ -22,3 +30,5 @@ services:
     image: mysql:5.7
     ports:
       - "3306:3306"
+    # git管理下に含めない環境設定ファイルを参照
+    env_file: .env
