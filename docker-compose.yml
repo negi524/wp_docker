@@ -7,11 +7,14 @@ services:
     container_name: wp_docker
     # wordpressのイメージを指定(常に最新にする)
     image: wordpress:latest
+    restart: always
     # ホストマシンのポート番号:コンテナのポート番号
     ports:
       - "9000:80"
     # ホスト側のテーマ開発ディレクトリをマウントする
     volumes:
+      # wp-config.phpなどの永続化のため、本体もマウントする
+      - ./wordpress:/var/www/html
       # ホスト側のパス:コンテナ側のパス
       - ~/Documents/workspace/blogtheme:/var/www/html/wp-content/themes/blogtheme
     # DBと連携する
@@ -28,7 +31,15 @@ services:
     container_name: db_docker
     # mysqlのイメージを指定(さくらのレンタルサーバと同じバージョン)
     image: mysql:5.7
+    restart: always
     ports:
       - "3306:3306"
     # git管理下に含めない環境設定ファイルを参照
     env_file: .env
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./db-data/mysql.dump.sql:/docker-entrypoint-initdb.d/install_wordpress.sql
+
+volumes:
+  db-data:
+    driver: local
