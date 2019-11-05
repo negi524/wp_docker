@@ -86,12 +86,13 @@ $ docker exec -it dbコンテナ名 sh -c 'mysqldump データベース名 -u �
 
 このリポジトリは`.env`ファイルが必須である。
 
-| key                        | value           |
-| :------------------------- | :-------------- |
-| WORDPRESS_DB_NAME          | DB の名前       |
-| WORDPRESS_DB_USER          | DB のユーザ名   |
-| WORDPRESS_DB_PASSWORD      | DB のパスワード |
-| MYSQL_RANDOM_ROOT_PASSWORD |                 |
-| MYSQL_DATABASE             |                 |
-| MYSQL_USER                 |                 |
-| MYSQL_PASSWORD             |                 |
+| key                        | value                                                               |
+| :------------------------- | :------------------------------------------------------------------ |
+| WORDPRESS_DB_NAME          | DB の名前                                                           |
+| WORDPRESS_DB_USER          | DB のユーザ名                                                       |
+| WORDPRESS_DB_PASSWORD      | DB のパスワード                                                     |
+| MYSQL_RANDOM_ROOT_PASSWORD |                                                                     |
+| MYSQL_DATABASE             |                                                                     |
+| MYSQL_USER                 |                                                                     |
+| MYSQL_PASSWORD             |                                                                     |
+| THEME_DIR                  | WordPress のテーマディレクトリ(wp-content/themes)にマウントするパス |

@@ -15,8 +15,8 @@ services:
     volumes:
       # wp-config.phpなどの永続化のため、WordPress本体をマウントする
       - ./wordpress:/var/www/html
-      # テーマ開発ディレクトリ
-      - ~/Documents/workspace/blogtheme:/var/www/html/wp-content/themes/blogtheme
+      # テーマ開発ディレクトリ(envファイルから読み込み)
+      - ${THEME_DIR}:/var/www/html/wp-content/themes
     # DBと連携する
     links:
       - wordpress-db
